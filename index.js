@@ -2,11 +2,11 @@ const express = require('express')
 const axios = require('axios')
 const app = express()
 const DB = [
-    {id: 1, nome: 'pizza de bacon', valor: 13.00},
-    {id: 2, nome: 'pizza de calabresa', valor: 14.00},
-    {id: 3, nome: 'pizza de frango', valor: 12.00},
-    {id: 4, nome: 'hamburger', valor: 20.00},
-    {id: 5, nome: 'cheeseburger', valor: 25.00},
+    {id: 1, nome: 'Pizza de bacon', valor: 13.00},
+    {id: 2, nome: 'Pizza de calabresa', valor: 14.00},
+    {id: 3, nome: 'Pizza de frango', valor: 12.00},
+    {id: 4, nome: 'Hamburger', valor: 20.00},
+    {id: 5, nome: 'Cheeseburger', valor: 25.00},
 ]
 
 app.use(express.json())
