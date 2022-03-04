@@ -1,0 +1,7 @@
+[
+    {"id":1,"nome":"Pizza de bacon","valor":13},
+    {"id":2,"nome":"Pizza de calabresa","valor":14},
+    {"id":3,"nome":"Pizza de frango","valor":12},
+    {"id":4,"nome":"Hamburger","valor":20},
+    {"id":5,"nome":"Cheeseburger","valor":25}
+]

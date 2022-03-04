@@ -1,15 +1,10 @@
 const express = require('express')
 const axios = require('axios')
 const app = express()
-const DB = [
-    {id: 1, nome: 'Pizza de bacon', valor: 13.00},
-    {id: 2, nome: 'Pizza de calabresa', valor: 14.00},
-    {id: 3, nome: 'Pizza de frango', valor: 12.00},
-    {id: 4, nome: 'Hamburger', valor: 20.00},
-    {id: 5, nome: 'Cheeseburger', valor: 25.00},
-]
+const db = require('./db')
 
 app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 async function getLocation(cep){
     let urlViaCep = `https://viacep.com.br/ws/${cep}/json`
@@ -31,17 +26,19 @@ app.get('/cep/:cep', async (req, res) => {
 })
 
 //GET para todos os itens do menu
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+    let result = await db.getMenu()
     res.status(200)
-    res.json(DB)
+    res.json(result)
 })
 
 //GET para um item específico do menu
-app.get('/:id', (req, res) => {
+app.get('/:id', async (req, res) => {
     try{
         const id = req.params.id -1
+        let result = await db.getMenu()
         res.status(200)
-        res.json(DB[id])
+        res.json(result[id])
     }catch(erro){
         res.status(404)
         res.send('Item não encontrado')
@@ -56,7 +53,7 @@ app.post('/', (req, res) => {
             nome: req.body.nome,
             valor: req.body.valor
         }
-        DB.push(data)
+        db.addToMenu(data)
         res.status(201)
         res.send('Item adicionado com sucesso')
     }catch(erro){
@@ -66,7 +63,7 @@ app.post('/', (req, res) => {
 })
 
 //PUT para modificar itens do menu
-app.put('/:id', (req, res) => {
+app.put('/:id', async (req, res) => {
     try{
         const id = req.params.id -1
         const data = {
@@ -74,7 +71,7 @@ app.put('/:id', (req, res) => {
             nome: req.body.nome,
             valor: req.body.valor
         }
-        DB[id] = data
+        db.editMenu(id, data)
         res.status(200)
         res.send('Item alterado com sucesso')
     }catch(erro){
@@ -84,10 +81,10 @@ app.put('/:id', (req, res) => {
 })
 
 //DELETE para remover itens do menu
-app.delete('/:id', (req, res) => {
+app.delete('/:id', async (req, res) => {
     try{
         const id = req.params.id -1
-        DB.splice(id, 1)
+        db.deleteFromMenu(id)
         res.status(200)
         res.send('Item removido com sucesso')
     }catch(erro){
