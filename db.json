@@ -2,6 +2,16 @@
     {"id":1,"nome":"Pizza de bacon","valor":13},
     {"id":2,"nome":"Pizza de calabresa","valor":14},
     {"id":3,"nome":"Pizza de frango","valor":12},
-    {"id":4,"nome":"Hamburger","valor":20},
-    {"id":5,"nome":"Cheeseburger","valor":25}
+    {"id":4,"nome":"Pizza portuguesa","valor":12},
+    {"id":5,"nome":"Pizza de lombo","valor":15},
+    {"id":6,"nome":"Pizza quatro queijos","valor":13},
+    {"id":7,"nome":"Pizza vegetariana","valor":11},
+    {"id":8,"nome":"Pizza marguerita","valor":11},
+    {"id":9,"nome":"Pizza de pepperoni","valor":15},
+    {"id":10,"nome":"Pizza vegana","valor":30},
+    {"id":11,"nome":"Hamburger","valor":20},
+    {"id":12,"nome":"Cheeseburger","valor":25},
+    {"id":13,"nome":"Churrascoburger","valor":30},
+    {"id":14,"nome":"Megaburger","valor":30},
+    {"id":15,"nome":"The Baconator","valor":35}
 ]

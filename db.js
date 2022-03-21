@@ -5,10 +5,19 @@ module.exports = {
         let result = await fs.readFileSync('./db.json', {encoding: 'utf-8'})
         return JSON.parse(result)
     },
+    async getHistory(){
+        let result = await fs.readFileSync('./pedidos.json', {encoding: 'utf-8'})
+        return JSON.parse(result)
+    },
     async addToMenu(item){
         let result = await this.getMenu()
         result.push(item)
         await fs.writeFileSync('./db.json', JSON.stringify(result))
+    },
+    async addToHistory(item){
+        let result = await this.getHistory()
+        result.push(item)
+        await fs.writeFileSync('./pedidos.json', JSON.stringify(result))
     },
     async editMenu(id, item){
         let result = await this.getMenu()
